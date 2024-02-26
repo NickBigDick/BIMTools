@@ -27,7 +27,7 @@ namespace Тестовый_проект
 
                 transaction.Commit();
             }
-            
+            TaskDialog.Show("HSD", "dfg");
             return Result.Succeeded;
         }
     }
