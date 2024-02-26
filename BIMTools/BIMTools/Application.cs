@@ -25,17 +25,19 @@ namespace BIMTools
             string tabName = "BIMToolsTab";
             application.CreateRibbonTab(tabName);
             RibbonPanel ribbonPanel = application.CreateRibbonPanel(tabName, "BIMМастер");
-            AddButton(ribbonPanel, "Task", assemblyPath, nameof(BIMTools.CreateLines), "Подсказка");
+            AddButton(ribbonPanel, "Task", assemblyPath, $"{nameof(BIMTools)}.{nameof(BIMTools.CreateLines)}", "Текущая задача", "icons8-алмазный-уход-24");
+            AddButton(ribbonPanel, "CloseOtherDocuments", assemblyPath, $"{nameof(BIMTools)}.{nameof(BIMTools.CloseOtherProjects)}", "Закрывает не активные документы", "CloseOtherProjects24");
+
             return Result.Succeeded;
         }
 
-        private void AddButton(RibbonPanel ribbonPanel, string buttonName, string path, string linkToCommand, string toolTip)
+        private void AddButton(RibbonPanel ribbonPanel, string buttonName, string path, string linkToCommand, string toolTip, string imageName)
         {
             PushButtonData buttonData = new PushButtonData(
                 buttonName, buttonName, path, linkToCommand);
             PushButton button = ribbonPanel.AddItem(buttonData) as PushButton;
             button.ToolTip = toolTip;
-            button.LargeImage = (ImageSource)new BitmapImage(new Uri(@"/BIMTools;component/Resources/icons8-алмазный-уход-24.png", UriKind.RelativeOrAbsolute)); 
+            button.LargeImage = (ImageSource)new BitmapImage(new Uri($@"/BIMTools;component/Resources/{imageName}.png", UriKind.RelativeOrAbsolute)); 
         }
     }
 }

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="CheckFamily.cs" />
+    <Compile Include="CloseOtherProjects.cs" />
     <Compile Include="CreateLines.cs" />
     <Compile Include="CurrentTask.cs" />
     <Compile Include="DeleteShedule.cs" />
@@ -63,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icons8-алмазный-уход-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CloseOtherProjects24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
