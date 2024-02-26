@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Тестовый проект")]
+[assembly: AssemblyTitle("BIMTools")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("pik")]
-[assembly: AssemblyProduct("Тестовый проект")]
+[assembly: AssemblyProduct("BIMTools")]
 [assembly: AssemblyCopyright("Copyright © pik 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

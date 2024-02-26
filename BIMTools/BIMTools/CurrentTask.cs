@@ -4,7 +4,7 @@ using Autodesk.Revit.UI;
 using System.Linq;
 
 
-namespace Тестовый_проект
+namespace BIMTools
 {
     [Regeneration(RegenerationOption.Manual)]
     [Transaction(TransactionMode.Manual)]

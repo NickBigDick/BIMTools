@@ -7,8 +7,8 @@
     <ProjectGuid>{414F8A89-D8DE-4845-AF19-E22597AE5996}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Тестовый_проект</RootNamespace>
-    <AssemblyName>Тестовый проект</AssemblyName>
+    <RootNamespace>BIMTools</RootNamespace>
+    <AssemblyName>BIMTools</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
       <Private>False</Private>
@@ -49,12 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application.cs" />
     <Compile Include="CheckFamily.cs" />
     <Compile Include="CreateLines.cs" />
     <Compile Include="CurrentTask.cs" />
     <Compile Include="DeleteShedule.cs" />
     <Compile Include="DeleteFittingInsulation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8-алмазный-уход-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8-алмазный-уход-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

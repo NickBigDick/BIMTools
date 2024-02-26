@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Тестовый_проект
+namespace BIMTools
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
@@ -16,7 +16,6 @@ namespace Тестовый_проект
         public static double convertInt(int value)
         {
             return UnitUtils.ConvertToInternalUnits(value, DisplayUnitType.DUT_MILLIMETERS);
-
         }
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
