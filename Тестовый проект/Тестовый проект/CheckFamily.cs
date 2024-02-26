@@ -18,6 +18,7 @@ namespace Тестовый_проект
             Document doc = commandData.Application.ActiveUIDocument.Document;
             var checker = new FilteredElementCollector(doc).OfClass(typeof(Family)).Cast<Family>().Any(f => f.Name.Contains("с КВ") && f.GetFamilySymbolIds().Select(doc.GetElement).Any(e => e.Name.Contains("без КВ")));
             TaskDialog.Show("Инфо", checker.ToString());
+
             return Result.Succeeded;
         }
     }
