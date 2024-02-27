@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="CheckFamily.cs" />
+    <Compile Include="CopyParametersFromSample.cs" />
     <Compile Include="PlaceFamilySymbols.cs" />
     <Compile Include="CloseOtherProjects.cs" />
     <Compile Include="CreateLines.cs" />
