@@ -21,6 +21,7 @@ namespace BIMTools
             var fmDoc = doc.FamilyManager;
             var window = new FamilyManagerParameterViewerWindow();
             window.familyManager = fmDoc;
+            window.document = doc;
 
             window.Show();
 

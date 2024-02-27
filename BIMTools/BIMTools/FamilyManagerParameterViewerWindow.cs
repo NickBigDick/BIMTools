@@ -13,30 +13,47 @@ namespace BIMTools
 {
     public partial class FamilyManagerParameterViewerWindow : System.Windows.Forms.Form
     {
+        public FamilyManager familyManager { get; set; }
+        public Document document { get; set; }
         public FamilyManagerParameterViewerWindow()
         {
             InitializeComponent();
+
         }
 
-        public FamilyManager familyManager { get; set; }
 
-        private void FamilyManagerParameterViewerWindow_Load(object sender, EventArgs e)
+     
+
+        private void getDataButton_Click(object sender, EventArgs e)
         {
             var column = new DataGridViewColumn();
-            column.HeaderText = "Параметры";
+            column.HeaderText = "Типоразмеры";
+            column.Name = "tiporazmer";
             column.CellTemplate = new DataGridViewTextBoxCell();
             dataGridView1.Columns.Add(column);
-
-            var types = familyManager.Types.Cast<FamilyType>().ToArray();
             var parameters = familyManager.Parameters.Cast<FamilyParameter>().Where(p => p.IsShared);
-            foreach (var type in types)
+            foreach (var parameter in parameters)
             {
                 column = new DataGridViewColumn();
-                column.HeaderText = type.Name;
-                column.Name = type.Name;
+                column.HeaderText = parameter.Definition.Name;
+                column.Name = parameter.Definition.Name;
                 column.CellTemplate = new DataGridViewTextBoxCell();
                 dataGridView1.Columns.Add(column);
             }
+            var types = familyManager.Types.Cast<FamilyType>().Select(t => t.Name);
+            foreach (var type in types)
+            {
+                int rowId = dataGridView1.Rows.Add();
+                DataGridViewRow row = dataGridView1.Rows[rowId];
+                row.Cells["tiporazmer"].Value = type;
+
+
+            }
+            //using (Transaction transaction = new Transaction(document))
+            //{
+            //    transaction.Start("CreateTable");
+            //    transaction.Commit();
+            //}
         }
     }
 }
