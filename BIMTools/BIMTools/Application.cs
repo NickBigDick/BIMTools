@@ -26,6 +26,7 @@ namespace BIMTools
             application.CreateRibbonTab(tabName);
             RibbonPanel ribbonPanel = application.CreateRibbonPanel(tabName, "BIMМастер");
             AddButton(ribbonPanel, "Task", assemblyPath, $"{nameof(BIMTools)}.{nameof(BIMTools.CreateLines)}", "Текущая задача", "icons8-алмазный-уход-24");
+            AddButton(ribbonPanel, "PlaceFamilySymbols", assemblyPath, $"{nameof(BIMTools)}.{nameof(BIMTools.PlaceFamilySymbols)}", "Расставляет выбранные типоразмеры", "icons8-алмазный-уход-24");
             AddButton(ribbonPanel, "CloseOtherDocuments", assemblyPath, $"{nameof(BIMTools)}.{nameof(BIMTools.CloseOtherProjects)}", "Закрывает не активные документы", "CloseOtherProjects24");
 
             return Result.Succeeded;

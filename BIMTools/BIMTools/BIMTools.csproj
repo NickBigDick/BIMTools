@@ -42,6 +42,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,11 +54,18 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="CheckFamily.cs" />
+    <Compile Include="PlaceFamilySymbols.cs" />
     <Compile Include="CloseOtherProjects.cs" />
     <Compile Include="CreateLines.cs" />
     <Compile Include="CurrentTask.cs" />
     <Compile Include="DeleteShedule.cs" />
     <Compile Include="DeleteFittingInsulation.cs" />
+    <Compile Include="PlaceFamilySymbolsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlaceFamilySymbolsWindow.Designer.cs">
+      <DependentUpon>PlaceFamilySymbolsWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\CloseOtherProjects24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PlaceFamilySymbolsWindow.resx">
+      <DependentUpon>PlaceFamilySymbolsWindow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
