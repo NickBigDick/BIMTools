@@ -3,11 +3,13 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BIMTools
 {
@@ -32,19 +34,32 @@ namespace BIMTools
             column.CellTemplate = new DataGridViewTextBoxCell();
             column.Frozen = true;
             window.dataGridView1.Columns.Add(column);
+            
+            var types = fmDoc.Types.Cast<FamilyType>().OrderBy(t => t.Name).ToArray();
+            //  Заполняем общие параметры
+            var familyParameters = fmDoc.Parameters.Cast<FamilyParameter>().Where(p => doc.GetElement(p.Id) != null).OrderBy(p => !p.IsShared).ThenBy(p => p.Definition.Name).ToArray();
+            CreateCells(window, familyParameters, types);
 
-            var parameters = fmDoc.Parameters.Cast<FamilyParameter>().Where(p => p.IsShared).OrderBy(p => p.Definition.Name);
+
+            window.Show();
+
+            return Result.Succeeded;
+        }
+
+        public void CreateCells(FamilyManagerParameterViewerWindow window, FamilyParameter[] parameters, FamilyType[] types)
+        {
+
             foreach (var parameter in parameters)
             {
-                column = new DataGridViewColumn();
+                var suffix = parameter.IsShared ? "общий" : "семейство";
+                var column = new DataGridViewColumn();
                 column.HeaderText = parameter.Definition.Name;
-                column.Name = parameter.Definition.Name;
+                column.Name = parameter.Definition.Name + suffix;
                 column.CellTemplate = new DataGridViewTextBoxCell();
                 window.dataGridView1.Columns.Add(column);
             }
-            var types = fmDoc.Types.Cast<FamilyType>().OrderBy(t => t.Name);
 
-            using (Transaction transaction = new Transaction(doc))
+            using (Transaction transaction = new Transaction(window.document))
             {
                 transaction.Start("CreateTable");
                 foreach (var type in types)
@@ -54,17 +69,13 @@ namespace BIMTools
                     row.Cells["tiporazmer"].Value = type.Name;
                     foreach (var parameter in parameters)
                     {
-                        row.Cells[parameter.Definition.Name].Value = getParameterValue(type, parameter);
+                        var suffix = parameter.IsShared ? "общий" : "семейство";
+                        row.Cells[parameter.Definition.Name + suffix].Value = getParameterValue(type, parameter);
                     }
                 }
                 transaction.Commit();
             }
-
-            window.Show();
-
-            return Result.Succeeded;
         }
-
         public object getParameterValue(FamilyType familyType, FamilyParameter parameter)
         {
             var storageType = parameter.StorageType;

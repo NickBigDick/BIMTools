@@ -20,6 +20,32 @@ namespace BIMTools
             InitializeComponent();
 
         }
-     
+
+
+        private void sharedParametersCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox) sender;
+            var columns = dataGridView1.Columns;
+            if (!checkBox.Checked)
+            {
+                foreach (DataGridViewColumn column in columns)
+                {
+                    if (column.Name.Contains("общий"))
+                    {
+                        column.Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                foreach (DataGridViewColumn column in columns)
+                {
+                    if (column.Name.Contains("общий"))
+                    {
+                        column.Visible = true;
+                    }
+                }
+            }
+        }
     }
 }
