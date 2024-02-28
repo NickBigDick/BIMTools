@@ -93,15 +93,16 @@ namespace BIMTools
             var storageType = parameter.StorageType;
             if (storageType == StorageType.Integer)
             {
-                familyManager.Set(parameter, (int)value);
+                familyManager.Set(parameter, int.Parse((string) value));
             }
             else if (storageType == StorageType.Double)
             {
-                familyManager.Set(parameter, UnitUtils.ConvertToInternalUnits((double)value, parameter.DisplayUnitType));
+                //familyManager.Set(parameter, UnitUtils.ConvertToInternalUnits((double)value, parameter.DisplayUnitType));
+                familyManager.Set(parameter, UnitUtils.ConvertToInternalUnits(double.Parse((string) value), parameter.DisplayUnitType));
             }
             else if (storageType == StorageType.ElementId)
             {
-                familyManager.Set(parameter, (ElementId)value);
+                familyManager.Set(parameter, (ElementId) value);
             }
             else
             {
