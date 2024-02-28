@@ -27,7 +27,7 @@ namespace BIMTools
             window.familyManager = fmDoc;
             window.document = doc;
 
-            window.dataGridView1.AllowUserToAddRows = false;
+            window.dataGridView1.AllowUserToAddRows = true;
             var column = new DataGridViewColumn();
             column.HeaderText = "Типоразмеры";
             column.Name = "tiporazmer";
@@ -41,7 +41,7 @@ namespace BIMTools
             CreateCells(window, familyParameters, types);
 
 
-            window.Show();
+            window.ShowDialog();
 
             return Result.Succeeded;
         }
