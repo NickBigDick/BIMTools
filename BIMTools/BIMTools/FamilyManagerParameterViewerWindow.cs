@@ -24,36 +24,38 @@ namespace BIMTools
 
      
 
-        private void getDataButton_Click(object sender, EventArgs e)
-        {
-            var column = new DataGridViewColumn();
-            column.HeaderText = "Типоразмеры";
-            column.Name = "tiporazmer";
-            column.CellTemplate = new DataGridViewTextBoxCell();
-            dataGridView1.Columns.Add(column);
-            var parameters = familyManager.Parameters.Cast<FamilyParameter>().Where(p => p.IsShared);
-            foreach (var parameter in parameters)
-            {
-                column = new DataGridViewColumn();
-                column.HeaderText = parameter.Definition.Name;
-                column.Name = parameter.Definition.Name;
-                column.CellTemplate = new DataGridViewTextBoxCell();
-                dataGridView1.Columns.Add(column);
-            }
-            var types = familyManager.Types.Cast<FamilyType>().Select(t => t.Name);
-            foreach (var type in types)
-            {
-                int rowId = dataGridView1.Rows.Add();
-                DataGridViewRow row = dataGridView1.Rows[rowId];
-                row.Cells["tiporazmer"].Value = type;
+        //private void getDataButton_Click(object sender, EventArgs e)
+        //{
+        //    dataGridView1.AllowUserToAddRows = false;
+        //    var column = new DataGridViewColumn();
+        //    column.HeaderText = "Типоразмеры";
+        //    column.Name = "tiporazmer";
+        //    column.CellTemplate = new DataGridViewTextBoxCell();
+        //    dataGridView1.Columns.Add(column);
 
+        //    var parameters = familyManager.Parameters.Cast<FamilyParameter>().Where(p => p.IsShared);
+        //    foreach (var parameter in parameters)
+        //    {
+        //        column = new DataGridViewColumn();
+        //        column.HeaderText = parameter.Definition.Name;
+        //        column.Name = parameter.Definition.Name;
+        //        column.CellTemplate = new DataGridViewTextBoxCell();
+        //        dataGridView1.Columns.Add(column);
+        //    }
 
-            }
-            //using (Transaction transaction = new Transaction(document))
-            //{
-            //    transaction.Start("CreateTable");
-            //    transaction.Commit();
-            //}
-        }
+        //    var types = familyManager.Types.Cast<FamilyType>().Select(t => t.Name);
+
+        //    using (Transaction transaction = new Transaction(document))
+        //    {
+        //        transaction.Start("CreateTable");
+        //        foreach (var type in types)
+        //        {
+        //            int rowId = dataGridView1.Rows.Add();
+        //            DataGridViewRow row = dataGridView1.Rows[rowId];
+        //            row.Cells["tiporazmer"].Value = type;
+        //        }
+        //        transaction.Commit();
+        //    }
+        //}
     }
 }

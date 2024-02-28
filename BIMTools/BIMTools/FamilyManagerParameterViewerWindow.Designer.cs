@@ -29,32 +29,22 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.getDataButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 58);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(284, 261);
+            this.dataGridView1.Size = new System.Drawing.Size(887, 249);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // getDataButton
-            // 
-            this.getDataButton.Location = new System.Drawing.Point(13, 3);
-            this.getDataButton.Name = "getDataButton";
-            this.getDataButton.Size = new System.Drawing.Size(75, 23);
-            this.getDataButton.TabIndex = 1;
-            this.getDataButton.Text = "Получить данные";
-            this.getDataButton.UseVisualStyleBackColor = true;
-            this.getDataButton.Click += new System.EventHandler(this.getDataButton_Click);
             // 
             // FamilyManagerParameterViewerWindow
             // 
-            this.ClientSize = new System.Drawing.Size(398, 386);
-            this.Controls.Add(this.getDataButton);
+            this.ClientSize = new System.Drawing.Size(911, 390);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FamilyManagerParameterViewerWindow";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -65,6 +55,5 @@
         #endregion
 
         public System.Windows.Forms.DataGridView dataGridView1;
-        public System.Windows.Forms.Button getDataButton;
     }
 }
