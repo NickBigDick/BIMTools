@@ -36,7 +36,7 @@ namespace BIMTools
 
         private void sharedParametersCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox checkBox = (CheckBox) sender;
+            CheckBox checkBox = (CheckBox)sender;
             var columns = dataGridView1.Columns;
             if (!checkBox.Checked)
             {
@@ -60,9 +60,7 @@ namespace BIMTools
             }
         }
 
-        private void saveChangesButton_Click(object sender, EventArgs e)
-        {
-        }
+
 
         private void CellIsChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -85,9 +83,29 @@ namespace BIMTools
                 foreach (var item in myCellDatas)
                 {
                     familyManager.CurrentType = item.familyType;
-                    familyManager.Set(item.familyParameter, (string) item.value);
+                    setParameterValue(familyManager, item.familyType, item.familyParameter, item.value);
                 }
                 transaction.Commit();
+            }
+        }
+        public void setParameterValue(FamilyManager familyManager, FamilyType familyType, FamilyParameter parameter, object value)
+        {
+            var storageType = parameter.StorageType;
+            if (storageType == StorageType.Integer)
+            {
+                familyManager.Set(parameter, (int)value);
+            }
+            else if (storageType == StorageType.Double)
+            {
+                familyManager.Set(parameter, UnitUtils.ConvertToInternalUnits((double)value, parameter.DisplayUnitType));
+            }
+            else if (storageType == StorageType.ElementId)
+            {
+                familyManager.Set(parameter, (ElementId)value);
+            }
+            else
+            {
+                familyManager.Set(parameter, (string)value);
             }
         }
     }
