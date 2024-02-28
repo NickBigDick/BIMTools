@@ -30,9 +30,10 @@ namespace BIMTools
             column.HeaderText = "Типоразмеры";
             column.Name = "tiporazmer";
             column.CellTemplate = new DataGridViewTextBoxCell();
+            column.Frozen = true;
             window.dataGridView1.Columns.Add(column);
 
-            var parameters = fmDoc.Parameters.Cast<FamilyParameter>().Where(p => p.IsShared);
+            var parameters = fmDoc.Parameters.Cast<FamilyParameter>().Where(p => p.IsShared).OrderBy(p => p.Definition.Name);
             foreach (var parameter in parameters)
             {
                 column = new DataGridViewColumn();
@@ -41,8 +42,7 @@ namespace BIMTools
                 column.CellTemplate = new DataGridViewTextBoxCell();
                 window.dataGridView1.Columns.Add(column);
             }
-
-            var types = fmDoc.Types.Cast<FamilyType>();
+            var types = fmDoc.Types.Cast<FamilyType>().OrderBy(t => t.Name);
 
             using (Transaction transaction = new Transaction(doc))
             {

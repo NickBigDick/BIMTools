@@ -34,16 +34,17 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(887, 249);
+            this.dataGridView1.Size = new System.Drawing.Size(887, 366);
             this.dataGridView1.TabIndex = 0;
             // 
             // FamilyManagerParameterViewerWindow
             // 
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(911, 390);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FamilyManagerParameterViewerWindow";
