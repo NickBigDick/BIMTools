@@ -1,15 +1,9 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace BIMTools
 {
@@ -34,7 +28,7 @@ namespace BIMTools
             column.CellTemplate = new DataGridViewTextBoxCell();
             column.Frozen = true;
             window.dataGridView1.Columns.Add(column);
-            
+
             var types = fmDoc.Types.Cast<FamilyType>().OrderBy(t => t.Name).ToArray();
             //  Заполняем общие параметры
             var familyParameters = fmDoc.Parameters.Cast<FamilyParameter>().Where(p => doc.GetElement(p.Id) != null).OrderBy(p => !p.IsShared).ThenBy(p => p.Definition.Name).ToArray();
@@ -71,6 +65,11 @@ namespace BIMTools
                     {
                         var suffix = parameter.IsShared ? "общий" : "семейство";
                         row.Cells[parameter.Definition.Name + suffix].Value = getParameterValue(type, parameter);
+                        if (parameter.IsDeterminedByFormula)
+                        {
+                            row.Cells[parameter.Definition.Name + suffix].ReadOnly = true;
+                            row.Cells[parameter.Definition.Name + suffix].Style.ForeColor = System.Drawing.Color.Gray;
+                        }
                     }
                 }
                 transaction.Commit();
@@ -85,7 +84,7 @@ namespace BIMTools
             }
             else if (storageType == StorageType.Double)
             {
-                double value = (double) familyType.AsDouble(parameter);
+                double value = (double)familyType.AsDouble(parameter);
                 return UnitUtils.ConvertFromInternalUnits(value, parameter.DisplayUnitType);
             }
             else if (storageType == StorageType.ElementId)
