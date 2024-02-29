@@ -36,7 +36,6 @@ namespace BIMTools
 
 
             window.ShowDialog();
-
             return Result.Succeeded;
         }
 
