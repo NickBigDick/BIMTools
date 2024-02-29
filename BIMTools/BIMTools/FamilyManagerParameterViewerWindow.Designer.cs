@@ -57,7 +57,7 @@
             this.sharedParametersCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sharedParametersCheckBox.Location = new System.Drawing.Point(12, 12);
             this.sharedParametersCheckBox.Name = "sharedParametersCheckBox";
-            this.sharedParametersCheckBox.Size = new System.Drawing.Size(138, 19);
+            this.sharedParametersCheckBox.Size = new System.Drawing.Size(121, 17);
             this.sharedParametersCheckBox.TabIndex = 1;
             this.sharedParametersCheckBox.Text = "Общие параметры";
             this.sharedParametersCheckBox.UseVisualStyleBackColor = true;
@@ -65,7 +65,8 @@
             // 
             // AcceptButton
             // 
-            this.AcceptButton.Location = new System.Drawing.Point(13, 355);
+            this.AcceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AcceptButton.Location = new System.Drawing.Point(12, 355);
             this.AcceptButton.Name = "AcceptButton";
             this.AcceptButton.Size = new System.Drawing.Size(174, 23);
             this.AcceptButton.TabIndex = 2;
