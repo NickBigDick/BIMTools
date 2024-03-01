@@ -55,6 +55,7 @@
     <Compile Include="Application.cs" />
     <Compile Include="CheckFamily.cs" />
     <Compile Include="CopyParametersFromSample.cs" />
+    <Compile Include="CreatePlanOfIntersections.cs" />
     <Compile Include="FamilyManagerParameterViewer.cs" />
     <Compile Include="FamilyManagerParameterViewerWindow.cs">
       <SubType>Form</SubType>

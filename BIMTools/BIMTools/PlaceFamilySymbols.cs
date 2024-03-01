@@ -21,6 +21,7 @@ namespace BIMTools
             var families = new FilteredElementCollector(doc).OfClass(typeof(Family));
             PlaceFamilySymbolsWindow window = new PlaceFamilySymbolsWindow();
             window.doc = doc;
+            window.FEC = families;
             foreach (var family in families)
             {
                 window.FamiliiesBox.Items.Add(family.Name);
