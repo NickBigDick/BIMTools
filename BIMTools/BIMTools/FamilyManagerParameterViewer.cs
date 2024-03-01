@@ -3,6 +3,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System.Linq;
 using System.Windows.Forms;
+using static BIMTools.MyParameters;
 
 
 namespace BIMTools
@@ -74,28 +75,6 @@ namespace BIMTools
                 transaction.Commit();
             }
         }
-        public object getParameterValue(FamilyType familyType, FamilyParameter parameter)
-        {
-            var storageType = parameter.StorageType;
-            if (storageType == StorageType.Integer)
-            {
-                return familyType.AsInteger(parameter);
-            }
-            else if (storageType == StorageType.Double)
-            {
-                double value = (double)familyType.AsDouble(parameter);
-                return UnitUtils.ConvertFromInternalUnits(value, parameter.DisplayUnitType);
-            }
-            else if (storageType == StorageType.ElementId)
-            {
-                return familyType.AsElementId(parameter);
-            }
-            else
-            {
-                return familyType.AsString(parameter);
-            }
 
-
-        }
     }
 }

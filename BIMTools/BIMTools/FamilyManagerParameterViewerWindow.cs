@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static BIMTools.MyParameters;
 
 namespace BIMTools
 {
@@ -88,27 +89,7 @@ namespace BIMTools
                 transaction.Commit();
             }
         }
-        public void setParameterValue(FamilyManager familyManager, FamilyType familyType, FamilyParameter parameter, object value)
-        {
-            var storageType = parameter.StorageType;
-            if (storageType == StorageType.Integer)
-            {
-                familyManager.Set(parameter, int.Parse((string) value));
-            }
-            else if (storageType == StorageType.Double)
-            {
-                //familyManager.Set(parameter, UnitUtils.ConvertToInternalUnits((double)value, parameter.DisplayUnitType));
-                familyManager.Set(parameter, UnitUtils.ConvertToInternalUnits(double.Parse((string) value), parameter.DisplayUnitType));
-            }
-            else if (storageType == StorageType.ElementId)
-            {
-                familyManager.Set(parameter, (ElementId) value);
-            }
-            else
-            {
-                familyManager.Set(parameter, (string)value);
-            }
-        }
+
 
     }
 }
