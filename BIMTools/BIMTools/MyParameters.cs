@@ -9,7 +9,7 @@ namespace BIMTools
 {
     internal class MyParameters
     {
-        public static object getParameterValue(FamilyType familyType, FamilyParameter parameter)
+        public static object getFamilyParameterValue(FamilyType familyType, FamilyParameter parameter)
         {
             var storageType = parameter.StorageType;
             if (storageType == StorageType.Integer)
@@ -31,7 +31,7 @@ namespace BIMTools
             }
         }
 
-        public static void setParameterValue(FamilyManager familyManager, FamilyType familyType, FamilyParameter parameter, object value)
+        public static void setFamilyParameterValue(FamilyManager familyManager, FamilyType familyType, FamilyParameter parameter, object value)
         {
             var storageType = parameter.StorageType;
             if (storageType == StorageType.Integer)

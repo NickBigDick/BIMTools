@@ -64,7 +64,7 @@ namespace BIMTools
                     foreach (var parameter in parameters)
                     {
                         var suffix = parameter.IsShared ? "общий" : "семейство";
-                        row.Cells[parameter.Definition.Name + suffix].Value = getParameterValue(type, parameter);
+                        row.Cells[parameter.Definition.Name + suffix].Value = getFamilyParameterValue(type, parameter);
                         if (parameter.IsDeterminedByFormula)
                         {
                             row.Cells[parameter.Definition.Name + suffix].ReadOnly = true;

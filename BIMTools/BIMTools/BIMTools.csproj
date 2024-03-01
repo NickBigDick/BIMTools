@@ -55,7 +55,6 @@
     <Compile Include="Application.cs" />
     <Compile Include="CheckFamily.cs" />
     <Compile Include="CopyParametersFromSample.cs" />
-    <Compile Include="CreatePlanOfIntersections.cs" />
     <Compile Include="FamilyManagerParameterViewer.cs" />
     <Compile Include="FamilyManagerParameterViewerWindow.cs">
       <SubType>Form</SubType>
@@ -63,6 +62,7 @@
     <Compile Include="FamilyManagerParameterViewerWindow.Designer.cs">
       <DependentUpon>FamilyManagerParameterViewerWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="FindIntersections.cs" />
     <Compile Include="MyParameters.cs" />
     <Compile Include="PlaceFamilySymbols.cs" />
     <Compile Include="CloseOtherProjects.cs" />

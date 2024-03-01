@@ -84,7 +84,7 @@ namespace BIMTools
                 foreach (var item in myCellDatas)
                 {
                     familyManager.CurrentType = item.familyType;
-                    setParameterValue(familyManager, item.familyType, item.familyParameter, item.value);
+                    setFamilyParameterValue(familyManager, item.familyType, item.familyParameter, item.value);
                 }
                 transaction.Commit();
             }
