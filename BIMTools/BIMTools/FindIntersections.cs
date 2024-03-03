@@ -35,18 +35,12 @@ namespace BIMTools
                 new ElementId(BuiltInCategory.OST_PipeFitting),
                 //new ElementId(BuiltInCategory.OST_PipeFittingInsulation),
                 //new ElementId(BuiltInCategory.OST_PipeInsulations),
-
             };
+
             var elementMulticategoryFilter = new ElementMulticategoryFilter(categories);
 
             var categoryFEC = new FilteredElementCollector(doc, view.Id).WherePasses(elementMulticategoryFilter);
-            var categoryelelems = categoryFEC.ToElements();
-            ElementClassFilter instFilter = new ElementClassFilter(typeof(FamilyInstance));
-            ElementClassFilter notinstFilter = new ElementClassFilter(typeof(Pipe));
-            var notinst = categoryFEC.WherePasses(notinstFilter).ToElements().ToList();
-            var insts = categoryFEC.WherePasses(instFilter).Cast<FamilyInstance>().Where(e => e.SuperComponent is null).Select(e => e as Element).ToList();
-            var elems = insts.Concat(notinst);
-
+            var elems = categoryFEC;
 
             Options options = new Options();
             using (Transaction transaction = new Transaction(doc))
@@ -56,7 +50,17 @@ namespace BIMTools
                 {
                     ElementIntersectsElementFilter elementFilter = new ElementIntersectsElementFilter(elem);
                     LogicalAndFilter lAF = new LogicalAndFilter(elementMulticategoryFilter, elementFilter);
-                    FilteredElementCollector FEC = new FilteredElementCollector(doc).WherePasses(lAF);
+                    FilteredElementCollector FEC = new FilteredElementCollector(doc, view.Id).WherePasses(lAF);
+                    if (elem.GetType() == typeof(FamilyInstance))
+                    {
+                        var inst = (FamilyInstance)elem;
+                        var subComponentIds = inst.GetSubComponentIds();
+                        if (subComponentIds.Any())
+                        {
+                            FEC = FEC.Excluding(subComponentIds);
+                        }
+
+                    }
                     if (FEC.Any())
                     {
                         elem.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS).Set("Пересекается");
