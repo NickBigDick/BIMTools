@@ -95,5 +95,9 @@
       <DependentUpon>PlaceFamilySymbolsWindow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8-intersect-24.png" />
+    <Resource Include="Resources\icons8-intersect-32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
