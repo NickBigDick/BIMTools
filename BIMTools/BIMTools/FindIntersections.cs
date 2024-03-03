@@ -28,13 +28,14 @@ namespace BIMTools
                 new ElementId(BuiltInCategory.OST_DuctCurves),
                 new ElementId(BuiltInCategory.OST_DuctFitting),
                 new ElementId(BuiltInCategory.OST_DuctTerminal),
-                //new ElementId(BuiltInCategory.OST_DuctFittingInsulation),
-                //new ElementId(BuiltInCategory.OST_DuctInsulations),
+                new ElementId(BuiltInCategory.OST_DuctInsulations),
                 new ElementId(BuiltInCategory.OST_PipeAccessory),
                 new ElementId(BuiltInCategory.OST_PipeCurves),
                 new ElementId(BuiltInCategory.OST_PipeFitting),
-                //new ElementId(BuiltInCategory.OST_PipeFittingInsulation),
-                //new ElementId(BuiltInCategory.OST_PipeInsulations),
+                new ElementId(BuiltInCategory.OST_PipeInsulations),
+                new ElementId(BuiltInCategory.OST_MechanicalEquipment),
+                new ElementId(BuiltInCategory.OST_PlumbingFixtures),
+                new ElementId(BuiltInCategory.OST_FlexPipeCurves),
             };
 
             var elementMulticategoryFilter = new ElementMulticategoryFilter(categories);
@@ -75,8 +76,6 @@ namespace BIMTools
             }
 
             var parameterFilter = new FilteredElementCollector(doc).OfClass(typeof(ParameterFilterElement)).Cast<ParameterFilterElement>().Where(f => f.Name == "Фильтр пересечений").FirstOrDefault();
-            
-
 
             //create rules
             ElementId parameterId = new ElementId(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS);
@@ -98,15 +97,15 @@ namespace BIMTools
                 //setgrafic override
                 OverrideGraphicSettings overrides = new OverrideGraphicSettings();
                 overrides.SetCutLineColor(new Color(255, 0, 0));
+                overrides.SetHalftone(true);
                 //apply filter to view
                 if (!view.GetFilters().Contains(parameterFilter.Id))
                 {
                     view.AddFilter(parameterFilter.Id);
                 }
-                view.SetFilterVisibility(parameterFilter.Id, false);
+                //view.SetFilterVisibility(parameterFilter.Id, false);
                 view.SetFilterOverrides(parameterFilter.Id, overrides);
                 transaction.Commit();
-
             }
 
             return Result.Succeeded;
