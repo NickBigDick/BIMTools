@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.secondCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
-            this.secondDocumentsComboBox = new System.Windows.Forms.ComboBox();
-            this.firstCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.startSearchButton = new System.Windows.Forms.Button();
             this.firstDocumentsComboBox = new System.Windows.Forms.ComboBox();
+            this.firstCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.secondCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.secondDocumentsComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -54,41 +55,16 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.secondCategoriesCheckedListBox);
             this.splitContainer1.Panel2.Controls.Add(this.secondDocumentsComboBox);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 394;
+            this.splitContainer1.Size = new System.Drawing.Size(771, 345);
+            this.splitContainer1.SplitterDistance = 379;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // secondCategoriesCheckedListBox
-            // 
-            this.secondCategoriesCheckedListBox.CheckOnClick = true;
-            this.secondCategoriesCheckedListBox.FormattingEnabled = true;
-            this.secondCategoriesCheckedListBox.Location = new System.Drawing.Point(15, 48);
-            this.secondCategoriesCheckedListBox.Name = "secondCategoriesCheckedListBox";
-            this.secondCategoriesCheckedListBox.Size = new System.Drawing.Size(375, 274);
-            this.secondCategoriesCheckedListBox.TabIndex = 1;
-            // 
-            // secondDocumentsComboBox
-            // 
-            this.secondDocumentsComboBox.FormattingEnabled = true;
-            this.secondDocumentsComboBox.Location = new System.Drawing.Point(15, 12);
-            this.secondDocumentsComboBox.Name = "secondDocumentsComboBox";
-            this.secondDocumentsComboBox.Size = new System.Drawing.Size(375, 21);
-            this.secondDocumentsComboBox.TabIndex = 0;
-            // 
-            // firstCategoriesCheckedListBox
-            // 
-            this.firstCategoriesCheckedListBox.CheckOnClick = true;
-            this.firstCategoriesCheckedListBox.FormattingEnabled = true;
-            this.firstCategoriesCheckedListBox.Location = new System.Drawing.Point(12, 48);
-            this.firstCategoriesCheckedListBox.Name = "firstCategoriesCheckedListBox";
-            this.firstCategoriesCheckedListBox.Size = new System.Drawing.Size(370, 274);
-            this.firstCategoriesCheckedListBox.TabIndex = 0;
             // 
             // startSearchButton
             // 
-            this.startSearchButton.Location = new System.Drawing.Point(99, 328);
+            this.startSearchButton.Location = new System.Drawing.Point(177, 244);
             this.startSearchButton.Name = "startSearchButton";
             this.startSearchButton.Size = new System.Drawing.Size(186, 23);
             this.startSearchButton.TabIndex = 1;
@@ -101,20 +77,57 @@
             this.firstDocumentsComboBox.FormattingEnabled = true;
             this.firstDocumentsComboBox.Location = new System.Drawing.Point(7, 12);
             this.firstDocumentsComboBox.Name = "firstDocumentsComboBox";
-            this.firstDocumentsComboBox.Size = new System.Drawing.Size(375, 21);
+            this.firstDocumentsComboBox.Size = new System.Drawing.Size(305, 21);
             this.firstDocumentsComboBox.TabIndex = 0;
+            // 
+            // firstCategoriesCheckedListBox
+            // 
+            this.firstCategoriesCheckedListBox.CheckOnClick = true;
+            this.firstCategoriesCheckedListBox.FormattingEnabled = true;
+            this.firstCategoriesCheckedListBox.Location = new System.Drawing.Point(12, 48);
+            this.firstCategoriesCheckedListBox.Name = "firstCategoriesCheckedListBox";
+            this.firstCategoriesCheckedListBox.Size = new System.Drawing.Size(300, 184);
+            this.firstCategoriesCheckedListBox.TabIndex = 0;
+            // 
+            // secondCategoriesCheckedListBox
+            // 
+            this.secondCategoriesCheckedListBox.CheckOnClick = true;
+            this.secondCategoriesCheckedListBox.FormattingEnabled = true;
+            this.secondCategoriesCheckedListBox.Location = new System.Drawing.Point(15, 48);
+            this.secondCategoriesCheckedListBox.Name = "secondCategoriesCheckedListBox";
+            this.secondCategoriesCheckedListBox.Size = new System.Drawing.Size(300, 184);
+            this.secondCategoriesCheckedListBox.TabIndex = 1;
+            // 
+            // secondDocumentsComboBox
+            // 
+            this.secondDocumentsComboBox.FormattingEnabled = true;
+            this.secondDocumentsComboBox.Location = new System.Drawing.Point(15, 12);
+            this.secondDocumentsComboBox.Name = "secondDocumentsComboBox";
+            this.secondDocumentsComboBox.Size = new System.Drawing.Size(300, 21);
+            this.secondDocumentsComboBox.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 244);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(369, 52);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Выбирайте второй связанный документ при необходимости.\r\n\r\nЕсли анализируете самоп" +
+    "ересечения, то выбирайте элементы только \r\nв колонке категорий слева!";
             // 
             // FindIntersectionsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(771, 345);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FindIntersectionsWindow";
             this.Text = "FindIntersectionsWindow";
             this.Load += new System.EventHandler(this.FindIntersectionsWindow_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -129,5 +142,6 @@
         private System.Windows.Forms.CheckedListBox firstCategoriesCheckedListBox;
         private System.Windows.Forms.Button startSearchButton;
         private System.Windows.Forms.ComboBox firstDocumentsComboBox;
+        private System.Windows.Forms.Label label1;
     }
 }

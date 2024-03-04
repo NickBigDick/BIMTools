@@ -55,7 +55,7 @@ namespace BIMTools
 
                 };
         private void FindIntersectionsWindow_Load(object sender, EventArgs e)
-            {
+        {
 
             //create categories
             firstDocumentsComboBox.Items.Clear();
@@ -65,7 +65,7 @@ namespace BIMTools
             secondDocumentsComboBox.Items.Add(currentdocument.Title);
             secondDocumentsComboBox.SelectedItem = secondDocumentsComboBox.Items[0];
             var links = new FilteredElementCollector(currentdocument).OfClass(typeof(RevitLinkInstance)).Cast<RevitLinkInstance>().Select(inst => inst.GetLinkDocument());
-            foreach ( var link in links )
+            foreach (var link in links)
             {
                 if (link != null)
                 {
@@ -82,17 +82,36 @@ namespace BIMTools
                 secondCategoriesCheckedListBox.Items.Add(name);
             }
 
+
             }
 
         private void startSearchButton_Click(object sender, EventArgs e)
         {
             var firstSelectedCategoriesNames = firstCategoriesCheckedListBox.SelectedItems.Cast<string>().ToArray();
             var firstSelectedCategories = firstSelectedCategoriesNames.Select(n => namaCategoryDict[n]).ToList();
+            var firstDocumentElementMulticategoryFilter = new ElementMulticategoryFilter(firstSelectedCategories);//категории из первого документа
+
+            var secondSelectedCategoriesNames = secondCategoriesCheckedListBox.SelectedItems.Cast<string>().ToArray();
+            var secondSelectedCategories = secondSelectedCategoriesNames.Select(n => namaCategoryDict[n]).ToList();
+            var secondDocumentName = secondDocumentsComboBox.SelectedItem;
+            Document seconddocument;
+            ElementMulticategoryFilter secondDocumentElementMulticategoryFilter;
+            if ((string)secondDocumentName != currentdocument.Title)
+            {
+                seconddocument = new FilteredElementCollector(currentdocument)
+                                                .OfClass(typeof(RevitLinkInstance))
+                                                .Cast<RevitLinkInstance>()
+                                                .Where(inst => inst.GetLinkDocument().Title == (string)secondDocumentName).First().GetLinkDocument();
+                secondDocumentElementMulticategoryFilter = new ElementMulticategoryFilter(secondSelectedCategories);//категории из второго документа
+            }
+            else
+            {
+                seconddocument = currentdocument;
+                secondDocumentElementMulticategoryFilter = firstDocumentElementMulticategoryFilter;
+            }
 
 
-            var elementMulticategoryFilter = new ElementMulticategoryFilter(firstSelectedCategories);
-
-            var categoryFEC = new FilteredElementCollector(currentdocument, view.Id).WherePasses(elementMulticategoryFilter);
+            var categoryFEC = new FilteredElementCollector(currentdocument, view.Id).WherePasses(firstDocumentElementMulticategoryFilter);//элементы первого документа
             var elems = categoryFEC;
 
             Options options = new Options();
@@ -102,8 +121,9 @@ namespace BIMTools
                 foreach (Element elem in elems)
                 {
                     ElementIntersectsElementFilter elementFilter = new ElementIntersectsElementFilter(elem);
-                    LogicalAndFilter lAF = new LogicalAndFilter(elementMulticategoryFilter, elementFilter);
-                    FilteredElementCollector FEC = new FilteredElementCollector(currentdocument, view.Id).WherePasses(lAF);
+                    LogicalAndFilter lAF = new LogicalAndFilter(secondDocumentElementMulticategoryFilter, elementFilter);
+                    //элементы из второго документа пересекающиеся с первым
+                    FilteredElementCollector FEC = new FilteredElementCollector(seconddocument).WherePasses(lAF);
                     if (elem.GetType() == typeof(FamilyInstance))
                     {
                         var inst = (FamilyInstance)elem;
