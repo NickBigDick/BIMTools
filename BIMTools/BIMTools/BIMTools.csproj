@@ -33,11 +33,11 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPIUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -63,6 +63,12 @@
       <DependentUpon>FamilyManagerParameterViewerWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="FindIntersections.cs" />
+    <Compile Include="FindIntersectionsWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindIntersectionsWindow.Designer.cs">
+      <DependentUpon>FindIntersectionsWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyParameters.cs" />
     <Compile Include="PlaceFamilySymbols.cs" />
     <Compile Include="CloseOtherProjects.cs" />
@@ -90,6 +96,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FamilyManagerParameterViewerWindow.resx">
       <DependentUpon>FamilyManagerParameterViewerWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindIntersectionsWindow.resx">
+      <DependentUpon>FindIntersectionsWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlaceFamilySymbolsWindow.resx">
       <DependentUpon>PlaceFamilySymbolsWindow.cs</DependentUpon>
