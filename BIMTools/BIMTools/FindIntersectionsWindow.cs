@@ -145,6 +145,8 @@ namespace BIMTools
                 transaction.Commit();
             }
             labelCounter.Text = counter.ToString();
+            var labelColor = counter == 0 ? labelCounter.ForeColor = System.Drawing.Color.Green : labelCounter.ForeColor = System.Drawing.Color.Red;
+
             var parameterFilter = new FilteredElementCollector(currentdocument).OfClass(typeof(ParameterFilterElement)).Cast<ParameterFilterElement>().Where(f => f.Name == "Фильтр пересечений").FirstOrDefault();
 
             //create rules
