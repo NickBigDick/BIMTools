@@ -73,10 +73,8 @@ namespace BIMTools
                 }
             }
 
-            firstCategoriesCheckedListBox.Items.Clear();
-            secondCategoriesCheckedListBox.Items.Clear();
             var categoryNames = namaCategoryDict.Keys.ToArray();
-            foreach (var name in categoryNames)
+            foreach (var name in categoryNames.OrderBy(n => n))
             {
                 firstCategoriesCheckedListBox.Items.Add(name);
                 secondCategoriesCheckedListBox.Items.Add(name);
@@ -87,11 +85,11 @@ namespace BIMTools
 
         private void startSearchButton_Click(object sender, EventArgs e)
         {
-            var firstSelectedCategoriesNames = firstCategoriesCheckedListBox.SelectedItems.Cast<string>().ToArray();
+            var firstSelectedCategoriesNames = firstCategoriesCheckedListBox.CheckedItems.Cast<string>().ToArray();
             var firstSelectedCategories = firstSelectedCategoriesNames.Select(n => namaCategoryDict[n]).ToList();
             var firstDocumentElementMulticategoryFilter = new ElementMulticategoryFilter(firstSelectedCategories);//категории из первого документа
 
-            var secondSelectedCategoriesNames = secondCategoriesCheckedListBox.SelectedItems.Cast<string>().ToArray();
+            var secondSelectedCategoriesNames = secondCategoriesCheckedListBox.CheckedItems.Cast<string>().ToArray();
             var secondSelectedCategories = secondSelectedCategoriesNames.Select(n => namaCategoryDict[n]).ToList();
             var secondDocumentName = secondDocumentsComboBox.SelectedItem;
             Document seconddocument;
@@ -176,6 +174,16 @@ namespace BIMTools
                 //view.SetFilterVisibility(parameterFilter.Id, false);
                 view.SetFilterOverrides(parameterFilter.Id, overrides);
                 transaction.Commit();
+            }
+        }
+
+
+
+        private void selectAllCategoriesButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < firstCategoriesCheckedListBox.Items.Count; i++)
+            {
+                firstCategoriesCheckedListBox.SetItemCheckState(i, CheckState.Checked);
             }
         }
     }
