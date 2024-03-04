@@ -35,10 +35,13 @@
             this.startSearchButton = new System.Windows.Forms.Button();
             this.firstDocumentsComboBox = new System.Windows.Forms.ComboBox();
             this.firstCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.secondSelectAllCategoriesButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.secondCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.secondDocumentsComboBox = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,6 +65,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.labelCounter);
+            this.splitContainer1.Panel2.Controls.Add(this.label5);
+            this.splitContainer1.Panel2.Controls.Add(this.secondSelectAllCategoriesButton);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.secondCategoriesCheckedListBox);
@@ -127,6 +133,16 @@
             this.firstCategoriesCheckedListBox.Size = new System.Drawing.Size(300, 184);
             this.firstCategoriesCheckedListBox.TabIndex = 0;
             // 
+            // secondSelectAllCategoriesButton
+            // 
+            this.secondSelectAllCategoriesButton.Location = new System.Drawing.Point(15, 245);
+            this.secondSelectAllCategoriesButton.Name = "secondSelectAllCategoriesButton";
+            this.secondSelectAllCategoriesButton.Size = new System.Drawing.Size(300, 23);
+            this.secondSelectAllCategoriesButton.TabIndex = 4;
+            this.secondSelectAllCategoriesButton.Text = "Выбрать все категории";
+            this.secondSelectAllCategoriesButton.UseVisualStyleBackColor = true;
+            this.secondSelectAllCategoriesButton.Click += new System.EventHandler(this.SecondSelectAllCategoriesButton);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -164,6 +180,25 @@
             this.secondDocumentsComboBox.Sorted = true;
             this.secondDocumentsComboBox.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 282);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Количество пересечений: ";
+            // 
+            // labelCounter
+            // 
+            this.labelCounter.AutoSize = true;
+            this.labelCounter.ForeColor = System.Drawing.Color.Red;
+            this.labelCounter.Location = new System.Drawing.Point(148, 282);
+            this.labelCounter.Name = "labelCounter";
+            this.labelCounter.Size = new System.Drawing.Size(13, 13);
+            this.labelCounter.TabIndex = 6;
+            this.labelCounter.Text = "0";
+            // 
             // FindIntersectionsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,5 +231,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button selectAllCategoriesButton;
+        private System.Windows.Forms.Button secondSelectAllCategoriesButton;
+        private System.Windows.Forms.Label labelCounter;
+        private System.Windows.Forms.Label label5;
     }
 }

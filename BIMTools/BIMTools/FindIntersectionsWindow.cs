@@ -113,6 +113,7 @@ namespace BIMTools
             var elems = categoryFEC;
 
             Options options = new Options();
+            var counter = 0;
             using (Transaction transaction = new Transaction(currentdocument))
             {
                 transaction.Start("FindIntersections");
@@ -134,6 +135,7 @@ namespace BIMTools
                     if (FEC.Any())
                     {
                         elem.get_Parameter(BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS).Set("Пересекается");
+                        counter++;
                     }
                     else
                     {
@@ -142,7 +144,7 @@ namespace BIMTools
                 }
                 transaction.Commit();
             }
-
+            labelCounter.Text = counter.ToString();
             var parameterFilter = new FilteredElementCollector(currentdocument).OfClass(typeof(ParameterFilterElement)).Cast<ParameterFilterElement>().Where(f => f.Name == "Фильтр пересечений").FirstOrDefault();
 
             //create rules
@@ -184,6 +186,14 @@ namespace BIMTools
             for (int i = 0; i < firstCategoriesCheckedListBox.Items.Count; i++)
             {
                 firstCategoriesCheckedListBox.SetItemCheckState(i, CheckState.Checked);
+            }
+        }
+
+        private void SecondSelectAllCategoriesButton(object sender, EventArgs e)
+        {
+            for (int i = 0; i < secondCategoriesCheckedListBox.Items.Count; i++)
+            {
+                secondCategoriesCheckedListBox.SetItemCheckState(i, CheckState.Checked);
             }
         }
     }
