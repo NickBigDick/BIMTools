@@ -17,15 +17,47 @@ namespace BIMTools
     public partial class FindIntersectionsWindow : System.Windows.Forms.Form
     {
         public Document currentdocument {  get; set; }
-        public List<ElementId> categories { get; set; }
         public Autodesk.Revit.DB.View view { get; set; }
         public FindIntersectionsWindow()
         {
             InitializeComponent();
         }
 
+        public List<ElementId> categories = new List<ElementId>()
+            {
+                new ElementId(BuiltInCategory.OST_DuctAccessory),
+                new ElementId(BuiltInCategory.OST_DuctCurves),
+                new ElementId(BuiltInCategory.OST_DuctFitting),
+                new ElementId(BuiltInCategory.OST_DuctTerminal),
+                new ElementId(BuiltInCategory.OST_DuctInsulations),
+                new ElementId(BuiltInCategory.OST_PipeAccessory),
+                new ElementId(BuiltInCategory.OST_PipeCurves),
+                new ElementId(BuiltInCategory.OST_PipeFitting),
+                new ElementId(BuiltInCategory.OST_PipeInsulations),
+                new ElementId(BuiltInCategory.OST_MechanicalEquipment),
+                new ElementId(BuiltInCategory.OST_PlumbingFixtures),
+                new ElementId(BuiltInCategory.OST_FlexPipeCurves),
+            };
+        public Dictionary<string, ElementId> namaCategoryDict = new Dictionary<string, ElementId>()
+                {
+                    { "Арматура воздуховодов", new ElementId(BuiltInCategory.OST_DuctAccessory)},
+                    { "Воздуховоды", new ElementId(BuiltInCategory.OST_DuctCurves)},
+                    { "Соединительные детали воздуховодов", new ElementId(BuiltInCategory.OST_DuctFitting)},
+                    { "Воздухораспределители", new ElementId(BuiltInCategory.OST_DuctTerminal)},
+                    { "Материалы изоляции воздуховодов", new ElementId(BuiltInCategory.OST_DuctInsulations)},
+                    { "Арматура трубопроводов", new ElementId(BuiltInCategory.OST_PipeAccessory)},
+                    { "Трубы", new ElementId(BuiltInCategory.OST_PipeCurves)},
+                    { "Соединительные детали трубопроводов", new ElementId(BuiltInCategory.OST_PipeFitting)},
+                    { "Материалы изоляции труб", new ElementId(BuiltInCategory.OST_PipeInsulations)},
+                    { "Оборудование", new ElementId(BuiltInCategory.OST_MechanicalEquipment)},
+                    { "Сантехнические приборы", new ElementId(BuiltInCategory.OST_PlumbingFixtures)},
+                    { "Гибкие трубы", new ElementId(BuiltInCategory.OST_FlexPipeCurves)},
+
+                };
         private void FindIntersectionsWindow_Load(object sender, EventArgs e)
-        {
+            {
+
+            //create categories
             secondDocumentsComboBox.Items.Clear();
             secondDocumentsComboBox.Items.Add(currentdocument.Title);
             secondDocumentsComboBox.SelectedItem = secondDocumentsComboBox.Items[0];
@@ -40,17 +72,21 @@ namespace BIMTools
 
             firstCategoriesCheckedListBox.Items.Clear();
             secondCategoriesCheckedListBox.Items.Clear();
-            categories.ForEach(c => secondCategoriesCheckedListBox.Items.Add(Category.GetCategory(currentdocument,c).Name));
-            categories.ForEach(c => firstCategoriesCheckedListBox.Items.Add(Category.GetCategory(currentdocument,c).Name));
+            var categoryNames = namaCategoryDict.Keys.ToArray();
+            foreach (var name in categoryNames)
+            {
+                firstCategoriesCheckedListBox.Items.Add(name);
+                secondCategoriesCheckedListBox.Items.Add(name);
+            }
 
-        }
+            }
 
         private void startSearchButton_Click(object sender, EventArgs e)
         {
-            var firstSelectedCategoriesNames = firstCategoriesCheckedListBox.SelectedItems;
-            categories = new FilteredElementCollector(currentdocument).OfClass(typeof(BuiltInCategory)).Where(c => firstSelectedCategoriesNames.Contains(c)).Select(c => c.Id).ToList();
+            var firstSelectedCategoriesNames = firstCategoriesCheckedListBox.SelectedItems.Cast<string>().ToArray();
+            var firstSelectedCategories = firstSelectedCategoriesNames.Select(n => namaCategoryDict[n]).ToList();
 
-            var elementMulticategoryFilter = new ElementMulticategoryFilter(categories);
+            var elementMulticategoryFilter = new ElementMulticategoryFilter(firstSelectedCategories);
 
             var categoryFEC = new FilteredElementCollector(currentdocument, view.Id).WherePasses(elementMulticategoryFilter);
             var elems = categoryFEC;
@@ -101,7 +137,7 @@ namespace BIMTools
                 //createparameterfilter
                 if (parameterFilter == default(ParameterFilterElement))
                 {
-                    parameterFilter = ParameterFilterElement.Create(currentdocument, "Фильтр пересечений", categories);
+                    parameterFilter = ParameterFilterElement.Create(currentdocument, "Фильтр пересечений", firstSelectedCategories);
                     parameterFilter.SetElementFilter(logicalAndFilter);
                 }
                 //setgrafic override

@@ -26,23 +26,7 @@ namespace BIMTools
             View view = doc.ActiveView;
             window.view = view;
 
-            //create categories
-            List<ElementId> categories = new List<ElementId>()
-            {
-                new ElementId(BuiltInCategory.OST_DuctAccessory),
-                new ElementId(BuiltInCategory.OST_DuctCurves),
-                new ElementId(BuiltInCategory.OST_DuctFitting),
-                new ElementId(BuiltInCategory.OST_DuctTerminal),
-                new ElementId(BuiltInCategory.OST_DuctInsulations),
-                new ElementId(BuiltInCategory.OST_PipeAccessory),
-                new ElementId(BuiltInCategory.OST_PipeCurves),
-                new ElementId(BuiltInCategory.OST_PipeFitting),
-                new ElementId(BuiltInCategory.OST_PipeInsulations),
-                new ElementId(BuiltInCategory.OST_MechanicalEquipment),
-                new ElementId(BuiltInCategory.OST_PlumbingFixtures),
-                new ElementId(BuiltInCategory.OST_FlexPipeCurves),
-            };
-            window.categories = categories;
+
 
 
 
