@@ -58,6 +58,9 @@ namespace BIMTools
             {
 
             //create categories
+            firstDocumentsComboBox.Items.Clear();
+            firstDocumentsComboBox.Items.Add(currentdocument.Title);
+            firstDocumentsComboBox.SelectedItem = firstDocumentsComboBox.Items[0];
             secondDocumentsComboBox.Items.Clear();
             secondDocumentsComboBox.Items.Add(currentdocument.Title);
             secondDocumentsComboBox.SelectedItem = secondDocumentsComboBox.Items[0];
@@ -85,6 +88,7 @@ namespace BIMTools
         {
             var firstSelectedCategoriesNames = firstCategoriesCheckedListBox.SelectedItems.Cast<string>().ToArray();
             var firstSelectedCategories = firstSelectedCategoriesNames.Select(n => namaCategoryDict[n]).ToList();
+
 
             var elementMulticategoryFilter = new ElementMulticategoryFilter(firstSelectedCategories);
 
@@ -137,7 +141,7 @@ namespace BIMTools
                 //createparameterfilter
                 if (parameterFilter == default(ParameterFilterElement))
                 {
-                    parameterFilter = ParameterFilterElement.Create(currentdocument, "Фильтр пересечений", firstSelectedCategories);
+                    parameterFilter = ParameterFilterElement.Create(currentdocument, "Фильтр пересечений", categories);
                     parameterFilter.SetElementFilter(logicalAndFilter);
                 }
                 //setgrafic override

@@ -33,6 +33,7 @@
             this.secondDocumentsComboBox = new System.Windows.Forms.ComboBox();
             this.firstCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.startSearchButton = new System.Windows.Forms.Button();
+            this.firstDocumentsComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -48,6 +49,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.startSearchButton);
+            this.splitContainer1.Panel1.Controls.Add(this.firstDocumentsComboBox);
             this.splitContainer1.Panel1.Controls.Add(this.firstCategoriesCheckedListBox);
             // 
             // splitContainer1.Panel2
@@ -94,6 +96,14 @@
             this.startSearchButton.UseVisualStyleBackColor = false;
             this.startSearchButton.Click += new System.EventHandler(this.startSearchButton_Click);
             // 
+            // firstDocumentsComboBox
+            // 
+            this.firstDocumentsComboBox.FormattingEnabled = true;
+            this.firstDocumentsComboBox.Location = new System.Drawing.Point(7, 12);
+            this.firstDocumentsComboBox.Name = "firstDocumentsComboBox";
+            this.firstDocumentsComboBox.Size = new System.Drawing.Size(375, 21);
+            this.firstDocumentsComboBox.TabIndex = 0;
+            // 
             // FindIntersectionsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,5 +128,6 @@
         private System.Windows.Forms.CheckedListBox secondCategoriesCheckedListBox;
         private System.Windows.Forms.CheckedListBox firstCategoriesCheckedListBox;
         private System.Windows.Forms.Button startSearchButton;
+        private System.Windows.Forms.ComboBox firstDocumentsComboBox;
     }
 }
