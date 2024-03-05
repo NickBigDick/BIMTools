@@ -35,13 +35,13 @@
             this.startSearchButton = new System.Windows.Forms.Button();
             this.firstDocumentsComboBox = new System.Windows.Forms.ComboBox();
             this.firstCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.labelCounter = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.secondSelectAllCategoriesButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.secondCategoriesCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.secondDocumentsComboBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.labelCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -133,6 +133,25 @@
             this.firstCategoriesCheckedListBox.Size = new System.Drawing.Size(300, 184);
             this.firstCategoriesCheckedListBox.TabIndex = 0;
             // 
+            // labelCounter
+            // 
+            this.labelCounter.AutoSize = true;
+            this.labelCounter.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.labelCounter.Location = new System.Drawing.Point(148, 282);
+            this.labelCounter.Name = "labelCounter";
+            this.labelCounter.Size = new System.Drawing.Size(13, 13);
+            this.labelCounter.TabIndex = 6;
+            this.labelCounter.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 282);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(140, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Количество пересечений: ";
+            // 
             // secondSelectAllCategoriesButton
             // 
             this.secondSelectAllCategoriesButton.Location = new System.Drawing.Point(15, 245);
@@ -179,25 +198,6 @@
             this.secondDocumentsComboBox.Size = new System.Drawing.Size(300, 21);
             this.secondDocumentsComboBox.Sorted = true;
             this.secondDocumentsComboBox.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 282);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Количество пересечений: ";
-            // 
-            // labelCounter
-            // 
-            this.labelCounter.AutoSize = true;
-            this.labelCounter.ForeColor = System.Drawing.Color.Red;
-            this.labelCounter.Location = new System.Drawing.Point(148, 282);
-            this.labelCounter.Name = "labelCounter";
-            this.labelCounter.Size = new System.Drawing.Size(13, 13);
-            this.labelCounter.TabIndex = 6;
-            this.labelCounter.Text = "0";
             // 
             // FindIntersectionsWindow
             // 
