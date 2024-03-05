@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("BIMTools")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("pik")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BIMTools")]
-[assembly: AssemblyCopyright("Copyright © pik 2024")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
