@@ -25,11 +25,6 @@ namespace BIMTools
             //get active view
             View view = doc.ActiveView;
             window.view = view;
-
-
-
-
-
             window.ShowDialog();
             return Result.Succeeded;
         }

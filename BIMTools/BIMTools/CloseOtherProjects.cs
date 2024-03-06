@@ -13,7 +13,7 @@ namespace BIMTools
         {
             var app = commandData.Application.Application;
             var doc = commandData.Application.ActiveUIDocument.Document;
-            var documents = app.Documents.Cast<Document>().Where(d => d.Title != doc.Title);
+            var documents = app.Documents.Cast<Document>().Where(d => !d.IsLinked & d.Title != doc.Title);
             foreach (var item in documents)
             {
                 item.Close(false);
