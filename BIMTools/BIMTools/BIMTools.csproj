@@ -70,6 +70,14 @@
       <DependentUpon>FindIntersectionsWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="MyParameters.cs" />
+    <Compile Include="MyRevitUtils.cs" />
+    <Compile Include="PlaceFamilyInstances.cs" />
+    <Compile Include="PlaceFamilyInstancesWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlaceFamilyInstancesWindow.Designer.cs">
+      <DependentUpon>PlaceFamilyInstancesWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlaceFamilySymbols.cs" />
     <Compile Include="CloseOtherProjects.cs" />
     <Compile Include="CreateLines.cs" />
@@ -99,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FindIntersectionsWindow.resx">
       <DependentUpon>FindIntersectionsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlaceFamilyInstancesWindow.resx">
+      <DependentUpon>PlaceFamilyInstancesWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlaceFamilySymbolsWindow.resx">
       <DependentUpon>PlaceFamilySymbolsWindow.cs</DependentUpon>
