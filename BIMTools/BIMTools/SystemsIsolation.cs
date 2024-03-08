@@ -20,7 +20,6 @@ namespace BIMTools
             SystemsIsolationWindow window = new SystemsIsolationWindow();
             window.document = document;
 
-            var pipingSystems = new FilteredElementCollector(document).OfCategory(BuiltInCategory.OST_PipingSystem).WhereElementIsElementType().Cast<PipingSystemType>().ToArray();
 
             window.ShowDialog();
             return Result.Succeeded;
