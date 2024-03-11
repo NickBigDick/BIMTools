@@ -17,9 +17,10 @@ namespace BIMTools
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Document document = commandData.Application.ActiveUIDocument.Document;
+            UIDocument uidocument = commandData.Application.ActiveUIDocument;
             SystemsIsolationWindow window = new SystemsIsolationWindow();
             window.document = document;
-
+            window.uidocument = uidocument;
 
             window.ShowDialog();
             return Result.Succeeded;

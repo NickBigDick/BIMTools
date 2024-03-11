@@ -32,9 +32,9 @@
             this.insulationTypesComboBox = new System.Windows.Forms.ComboBox();
             this.PlaceInsulationButton = new System.Windows.Forms.Button();
             this.insulationWidthTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.deleteInsulationButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.showSystemButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // systemsTreeView
@@ -48,14 +48,15 @@
             // insulationTypesComboBox
             // 
             this.insulationTypesComboBox.FormattingEnabled = true;
-            this.insulationTypesComboBox.Location = new System.Drawing.Point(382, 37);
+            this.insulationTypesComboBox.Location = new System.Drawing.Point(382, 12);
             this.insulationTypesComboBox.Name = "insulationTypesComboBox";
             this.insulationTypesComboBox.Size = new System.Drawing.Size(281, 21);
             this.insulationTypesComboBox.TabIndex = 1;
+            this.insulationTypesComboBox.Text = "Выберите тип изоляции:";
             // 
             // PlaceInsulationButton
             // 
-            this.PlaceInsulationButton.Location = new System.Drawing.Point(382, 132);
+            this.PlaceInsulationButton.Location = new System.Drawing.Point(382, 107);
             this.PlaceInsulationButton.Name = "PlaceInsulationButton";
             this.PlaceInsulationButton.Size = new System.Drawing.Size(281, 23);
             this.PlaceInsulationButton.TabIndex = 4;
@@ -65,25 +66,16 @@
             // 
             // insulationWidthTextBox
             // 
-            this.insulationWidthTextBox.Location = new System.Drawing.Point(382, 77);
+            this.insulationWidthTextBox.Location = new System.Drawing.Point(525, 39);
             this.insulationWidthTextBox.Name = "insulationWidthTextBox";
-            this.insulationWidthTextBox.Size = new System.Drawing.Size(281, 20);
+            this.insulationWidthTextBox.Size = new System.Drawing.Size(138, 20);
             this.insulationWidthTextBox.TabIndex = 5;
             this.insulationWidthTextBox.Text = "25";
             this.insulationWidthTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(379, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Укажите толщину изоляции:";
-            // 
             // deleteInsulationButton
             // 
-            this.deleteInsulationButton.Location = new System.Drawing.Point(382, 103);
+            this.deleteInsulationButton.Location = new System.Drawing.Point(382, 78);
             this.deleteInsulationButton.Name = "deleteInsulationButton";
             this.deleteInsulationButton.Size = new System.Drawing.Size(281, 23);
             this.deleteInsulationButton.TabIndex = 4;
@@ -91,25 +83,35 @@
             this.deleteInsulationButton.UseVisualStyleBackColor = true;
             this.deleteInsulationButton.Click += new System.EventHandler(this.DeleteInsulation_Click);
             // 
-            // label2
+            // label1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(379, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Выберите тип изоляции:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(412, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Толщина изоляции:";
+            // 
+            // showSystemButton
+            // 
+            this.showSystemButton.Location = new System.Drawing.Point(382, 351);
+            this.showSystemButton.Name = "showSystemButton";
+            this.showSystemButton.Size = new System.Drawing.Size(281, 23);
+            this.showSystemButton.TabIndex = 7;
+            this.showSystemButton.Text = "Подсветить систему";
+            this.showSystemButton.UseVisualStyleBackColor = true;
+            this.showSystemButton.Click += new System.EventHandler(this.showSystemButton_Click);
             // 
             // SystemsIsolationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 433);
+            this.ClientSize = new System.Drawing.Size(671, 381);
+            this.Controls.Add(this.showSystemButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.insulationWidthTextBox);
             this.Controls.Add(this.deleteInsulationButton);
             this.Controls.Add(this.PlaceInsulationButton);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.insulationTypesComboBox);
             this.Controls.Add(this.systemsTreeView);
             this.Name = "SystemsIsolationWindow";
@@ -126,8 +128,8 @@
         private System.Windows.Forms.ComboBox insulationTypesComboBox;
         private System.Windows.Forms.Button PlaceInsulationButton;
         private System.Windows.Forms.TextBox insulationWidthTextBox;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button deleteInsulationButton;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button showSystemButton;
     }
 }
