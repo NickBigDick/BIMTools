@@ -37,7 +37,6 @@ namespace BIMTools
             systemNode.Name = "System";
             systemNode.Text = "Система";
             systemsTreeView.Nodes.Add(systemNode);
-            //systemNode.Nodes["System"].ForeColor = System.Drawing.Color.Gray;
 
             systemNode.Nodes.Add("OV", "ОВ");
             systemNode.Nodes["OV"].ForeColor = System.Drawing.Color.Gray;
@@ -97,7 +96,7 @@ namespace BIMTools
 
             //вентиляция
             var ductSystems = new FilteredElementCollector(document).OfCategory(BuiltInCategory.OST_DuctSystem).WhereElementIsNotElementType().Cast<MechanicalSystem>().ToArray();
-            var ductSystemTypes = ductSystems.Select(x => document.GetElement(x.GetTypeId())).OrderBy(x => x.Name).ToArray().Distinct();
+            var ductSystemTypes = ductSystems.Select(x => document.GetElement(x.GetTypeId())).OrderBy(x => x.Name).ToArray().Cast<MechanicalSystemType>().Distinct(new DuctSystemTypeIEqualityComparer());
             foreach (var ductSystemType in ductSystemTypes)
             {
                 systemNode.Nodes["OV"].Nodes.Add(ductSystemType.Name, ductSystemType.Name);
@@ -143,7 +142,6 @@ namespace BIMTools
                         systemsDiametersDictionary.Add(ductSystem.Name, new Dictionary<string, Element[]> { { "Прочие элементы: " + fittingsGroupedByDiameter.Key, fittingsGroupedByDiameter.ToArray() } });
                     }
                 }
-
             }
 
 
@@ -164,7 +162,18 @@ namespace BIMTools
             insulationTypesComboBox.SelectedItem = insulationTypesComboBox.Items[0];
         }
 
+        public class DuctSystemTypeIEqualityComparer : IEqualityComparer<MechanicalSystemType>
+        {
+            public bool Equals(MechanicalSystemType x, MechanicalSystemType y)
+            {
+                return x.Name == y.Name;
+            }
 
+            public int GetHashCode(MechanicalSystemType obj)
+            {
+                return obj.Id.IntegerValue;
+            }
+        }
 
         private void PlaceInsulation_Click(object sender, EventArgs e)
         {
