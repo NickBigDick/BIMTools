@@ -1,0 +1,25 @@
+﻿<Window x:Class="BIMTools.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BIMTools"
+             mc:Ignorable="d" 
+             d:DesignHeight="180" d:DesignWidth="210" MaxWidth="210" MaxHeight="180">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,5,0,5" Width="NaN" Height="NaN">
+            <TextBlock TextWrapping="Wrap" Margin="5,5,0,5" FontSize="10"><Run Text="Префикс"/><Run Language="ru-ru" Text=": "/><LineBreak/><Run Language="ru-ru"/></TextBlock>
+            <TextBox TextWrapping="Wrap" Text="TextBox" Margin="0,5,0,5" Width="155"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,5">
+            <TextBlock TextWrapping="Wrap" Margin="5,5,0,5" FontSize="10"><Run Text="Стартовый "/><Run Text="номер"/><Run Language="ru-ru" Text=":"/></TextBlock>
+            <TextBox TextWrapping="Wrap" Text="TextBox" Margin="0,5,0,5"/>
+        </StackPanel>
+        <ComboBox Margin="0,5,0,5" Width="160" VerticalAlignment="Stretch"/>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,5,0,5">
+            <Button Content="Запуск" Width="75" Height="25" VerticalAlignment="Stretch" Margin="0,5,0,5"/>
+            <Button Content="Отмена" Width="85" Height="25" VerticalAlignment="Stretch" Margin="0,5,0,5"/>
+        </StackPanel>
+
+    </StackPanel>
+</Window>
