@@ -38,6 +38,7 @@ namespace BIMTools
                 }
                 transaction.Commit();
             }
+
             TaskDialog.Show("Инфо", $"Успешно создал линии");
             return Result.Succeeded;
         }
