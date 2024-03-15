@@ -15,7 +15,7 @@ namespace BIMTools
     {
         public static double convertInt(int value)
         {
-            return UnitUtils.ConvertToInternalUnits(value, DisplayUnitType.DUT_MILLIMETERS);
+            return UnitUtils.ConvertToInternalUnits(value, UnitTypeId.Millimeters);
         }
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

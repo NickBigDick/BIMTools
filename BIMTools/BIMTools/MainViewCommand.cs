@@ -17,9 +17,7 @@ namespace BIMTools
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             MyRevitAPI.Initialize(commandData);
-            Autodesk.Revit.DB.Reference reference = MyRevitAPI.UIDocument.Selection.PickObject(ObjectType.Element, "Выберите элемент для сбора параметров");
-            var mainViewModel = new MainViewModel(reference);
-
+            //Reference reference = MyRevitAPI.UIDocument.Selection.PickObject(ObjectType.Element, "Выберите элемент для сбора параметров");
 
             var window = new MainView();
             window.ShowDialog();

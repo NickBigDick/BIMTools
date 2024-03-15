@@ -16,6 +16,8 @@ namespace BIMTools
         public static void Initialize(ExternalCommandData commandData)
         {
             UIApplication = commandData.Application;
+            UIDocument = UIApplication.ActiveUIDocument;
+            Document = UIDocument.Document;
         }
     }
 }

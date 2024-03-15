@@ -12,8 +12,7 @@ namespace BIMTools
     {
         public static double ConvertUnit(Document document, double value, bool toInternal = true, int numberOfDigits = 0)
         {
-            var display_units = document.GetUnits().GetFormatOptions(UnitType.UT_Length).DisplayUnits;
-            var convertedValue = toInternal? UnitUtils.ConvertToInternalUnits(value, display_units) : UnitUtils.ConvertFromInternalUnits(value, display_units);
+            var convertedValue = toInternal? UnitUtils.ConvertToInternalUnits(value, UnitTypeId.Millimeters) : UnitUtils.ConvertFromInternalUnits(value, UnitTypeId.Millimeters);
             if (numberOfDigits == 0)
             {
                 return convertedValue;

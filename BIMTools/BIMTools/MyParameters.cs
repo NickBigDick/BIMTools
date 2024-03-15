@@ -19,7 +19,7 @@ namespace BIMTools
             else if (storageType == StorageType.Double)
             {
                 double value = (double)familyType.AsDouble(parameter);
-                return UnitUtils.ConvertFromInternalUnits(value, parameter.DisplayUnitType);
+                return UnitUtils.ConvertFromInternalUnits(value, parameter.GetUnitTypeId());
             }
             else if (storageType == StorageType.ElementId)
             {
@@ -41,7 +41,7 @@ namespace BIMTools
             else if (storageType == StorageType.Double)
             {
                 //familyManager.Set(parameter, UnitUtils.ConvertToInternalUnits((double)value, parameter.DisplayUnitType));
-                familyManager.Set(parameter, UnitUtils.ConvertToInternalUnits(double.Parse((string)value), parameter.DisplayUnitType));
+                familyManager.Set(parameter, UnitUtils.ConvertToInternalUnits(double.Parse((string)value), parameter.GetUnitTypeId()));
             }
             else if (storageType == StorageType.ElementId)
             {
